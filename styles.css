@@ -1,0 +1,180 @@
+:root {
+  --bg-1: #f0f6ff;
+  --bg-2: #fff6ec;
+  --ink: #18222f;
+  --muted: #425367;
+  --surface: rgba(255, 255, 255, 0.86);
+  --line: rgba(24, 34, 47, 0.14);
+  --accent: #005f73;
+  --accent-strong: #003f4d;
+  --good: #0f766e;
+  --warn: #8a5d00;
+  --bad: #9f1239;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 600px at 8% 0%, rgba(0, 95, 115, 0.2), transparent 60%),
+    radial-gradient(1000px 500px at 100% 100%, rgba(255, 137, 90, 0.22), transparent 62%),
+    linear-gradient(130deg, var(--bg-1), var(--bg-2));
+}
+
+.app-shell {
+  width: min(920px, 92vw);
+  margin: 4rem auto;
+  display: grid;
+  gap: 1.6rem;
+}
+
+.hero {
+  animation: lift-in 420ms ease-out both;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+h1 {
+  margin: 0.35rem 0 0;
+  font-family: "Fraunces", "Georgia", serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+}
+
+.subtext {
+  margin: 0.8rem 0 0;
+  max-width: 66ch;
+  color: var(--muted);
+}
+
+.calculator-card {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: 0 16px 46px rgba(24, 34, 47, 0.12);
+  backdrop-filter: blur(2px);
+  padding: clamp(1rem, 2.4vw, 1.7rem);
+  display: grid;
+  gap: 1rem;
+  animation: lift-in 600ms ease-out both;
+}
+
+form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+label {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  border-radius: 12px;
+  font: inherit;
+}
+
+input,
+select {
+  border: 1px solid rgba(24, 34, 47, 0.25);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  padding: 0.7rem 0.8rem;
+}
+
+input:focus,
+select:focus,
+button:focus-visible {
+  outline: 2px solid rgba(0, 95, 115, 0.32);
+  outline-offset: 1px;
+}
+
+button {
+  margin-top: 0.4rem;
+  border: 0;
+  padding: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: linear-gradient(125deg, var(--accent), var(--accent-strong));
+  transition: transform 150ms ease, box-shadow 160ms ease;
+  box-shadow: 0 8px 16px rgba(0, 63, 77, 0.28);
+  cursor: pointer;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.result {
+  border: 1px dashed rgba(24, 34, 47, 0.22);
+  border-radius: 14px;
+  padding: 0.95rem;
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.result p {
+  margin: 0;
+}
+
+.result strong {
+  font-family: "Fraunces", "Georgia", serif;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+}
+
+.result.ok {
+  border-color: rgba(15, 118, 110, 0.45);
+  color: var(--good);
+}
+
+.result.warn {
+  border-color: rgba(138, 93, 0, 0.45);
+  color: var(--warn);
+}
+
+.result.error {
+  border-color: rgba(159, 18, 57, 0.44);
+  color: var(--bad);
+}
+
+@keyframes lift-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    margin: 1.3rem auto;
+  }
+
+  .calculator-card {
+    border-radius: 16px;
+  }
+}
