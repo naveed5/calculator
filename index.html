@@ -24,6 +24,13 @@
 
       <section class="calculator-card" aria-label="Bonus calculator form">
         <form id="bonus-form" novalidate>
+          <label for="employee-country">Employee Country</label>
+          <select id="employee-country" name="employeeCountry" required>
+            <option value="" selected disabled>Select country</option>
+            <option value="PK">Pakistan (PK)</option>
+            <option value="OTHER">Other</option>
+          </select>
+
           <label for="career-level">Career Level</label>
           <input
             id="career-level"
@@ -56,6 +63,8 @@
           </select>
 
           <button type="submit">Calculate Bonus</button>
+
+          <p class="helper-note">Currency conversion used: 1 USD = 281 PKR.</p>
         </form>
 
         <div id="result" class="result" aria-live="polite">
